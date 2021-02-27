@@ -10,6 +10,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     EditText name, college;
+    MyCoreDatabase myData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initView();
+
+        myData = new MyCoreDatabase(this);
     }
 
     private void initView() {
@@ -25,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doSave(View view) {
+        myData.insertData(name.getText().toString(), college.getText().toString());
     }
 
     public void doLoad(View view) {
+        myData.getAll();
     }
 }
